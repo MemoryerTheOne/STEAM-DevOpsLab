@@ -1,0 +1,117 @@
+<div class="studio-shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">S</div>
+      <div>
+        <p class="eyebrow">Sequential recommender</p>
+        <h1>STEAM Recommendation Studio</h1>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <label>
+        Dataset
+        <select [(ngModel)]="selectedDataset">
+          <option *ngFor="let dataset of datasets" [value]="dataset">{{ dataset }}</option>
+        </select>
+      </label>
+      <button type="button">Run correction</button>
+    </div>
+  </header>
+
+  <section class="metrics-grid">
+    <article class="metric-card" *ngFor="let metric of metrics">
+      <div class="metric-top">
+        <span>{{ metric.label }}</span>
+        <span class="trend" [ngClass]="metric.trend">{{ metric.delta }}</span>
+      </div>
+      <div class="metric-value">{{ metric.value }}</div>
+    </article>
+  </section>
+
+  <main class="content-grid">
+    <section class="panel">
+      <div class="panel-header">
+        <h2>User behavior sequence</h2>
+        <span>{{ sequence.length }} interactions</span>
+      </div>
+
+      <div class="sequence-list">
+        <div class="sequence-item" *ngFor="let item of sequence; let i = index">
+          <div class="step">#{{ i + 1 }}</div>
+          <div class="item-card" [ngClass]="item.type">
+            <strong>{{ item.name }}</strong>
+            <small>{{ item.category }}</small>
+          </div>
+          <span class="badge" [ngClass]="item.type">{{ item.type }}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Sequence correction</h2>
+        <span>Auto-detected</span>
+      </div>
+
+      <div class="diff-list">
+        <div class="diff-row" *ngFor="let action of correctedActions">
+          <div class="diff-header">
+            <strong>{{ action.label }}</strong>
+            <span class="badge" [ngClass]="action.kind">{{ action.kind }}</span>
+          </div>
+          <div>{{ action.item }}</div>
+          <p>{{ action.note }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Next-item predictions</h2>
+        <span>Top 5</span>
+      </div>
+
+      <div class="recommendation-list">
+        <div class="recommendation-item" *ngFor="let item of recommendations">
+          <div class="rank-badge">{{ item.rank }}</div>
+          <div class="rec-meta">
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.category }}</p>
+          </div>
+          <div class="score-pill">{{ item.score }}%</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="bottom-grid">
+    <div class="panel">
+      <div class="panel-header">
+        <h2>Correction distribution</h2>
+        <span>Session summary</span>
+      </div>
+
+      <div class="bar-list">
+        <div class="bar-row" *ngFor="let row of performance">
+          <span>{{ row.label }}</span>
+          <div class="bar-track">
+            <div class="bar-fill" [ngStyle]="{ width: row.value + '%', background: row.color }"></div>
+          </div>
+          <strong>{{ row.value }}%</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2>Insight</h2>
+        <span>Model readout</span>
+      </div>
+
+      <div class="insight-box">
+        {{ insightSummary }}
+      </div>
+    </div>
+  </section>
+</div>
