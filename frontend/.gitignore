@@ -1,1 +1,38 @@
 .gitignore
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Dependencies
+/node_modules
+
+# Angular cache
+.angular
+
+# IDEs and editors
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/connect.lock
+/libpeerconnection.log
+
+# Coverage and test output
+/coverage
+/test-results
+
+# System files
+.DS_Store
+Thumbs.db
