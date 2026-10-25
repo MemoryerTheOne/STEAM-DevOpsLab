@@ -40,5 +40,25 @@ If you want to get the performances on the changed sequence group and the unchan
 python evaluate_on_mod.py -e 100
 ```
 
+To run the frontend, do the following:
+Run it like this:
+
+- From the repo root:
+  - `cd frontend`
+  - `npm install`
+  - `npm start`
+
+That uses the `start` script in `frontend/package.json`, which runs Angular’s dev server (`ng serve`).
+
+Then open:
+- `http://localhost:4200`
+
+If you want a production build instead:
+- `cd frontend`
+- `npm run build`
+
+If `npm start` says Angular CLI is missing, run:
+- `npx ng serve`
+
 Tips:
 We run on the Tesla A100, which contains 40g of video memory, so we can set the maximum batch size to 256. If there is no such large resource, you need to set a smaller batch size in *main.py*. We also upload the trained models to *./checkpoint/*.
