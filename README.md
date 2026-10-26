@@ -2,7 +2,8 @@
 
 > Codes for WWW'23: A Self-Correcting Sequential Recommender
 
-##Name and Roll No: M.Ehtisaam Ullah Khan, 232065
+## Name and Roll No: M.Ehtisaam Ullah Khan, 232065
+
 ## Introduction
 
 Sequential recommendations aim to capture users’ preferences from their historical interactions so as to predict the next item that they will interact with. Sequential recommendation methods usually assume that all items in a user’s historical interactions reflect her/his preference and transition patterns between items. However, real-world interaction data is imperfect in that (i) users might erroneously click on items, i.e., so-called misclicks on irrelevant items, and (ii) users might miss items, i.e., unexposed relevant items due to inaccurate recommendations.
